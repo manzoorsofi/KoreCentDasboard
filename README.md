@@ -51,3 +51,5 @@ The dashboard provides a clean, intuitive interface for visualizing data, includ
     ```
 
 The application will be available at **http://localhost:3000/**
+
+For demo **https://korecentdasboard.netlify.app/**
