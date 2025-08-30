@@ -77,7 +77,7 @@ function DashboardContent() {
           gridTemplateColumns: {
             xs: "1fr",
             sm: "repeat(2, 1fr)",
-            md: "repeat(3, 1fr)",
+            md: "repeat(4, 1fr)",
           },
         }}
       >
@@ -101,6 +101,14 @@ function DashboardContent() {
           <StatsCard
             title="Total Orders"
             value={totalOrders}
+            loading={isLoading}
+            icon={<ShoppingCart fontSize="large" />}
+          />
+        </Box>
+                <Box>
+          <StatsCard
+            title="Total Items"
+            value={activeUsers}
             loading={isLoading}
             icon={<ShoppingCart fontSize="large" />}
           />
