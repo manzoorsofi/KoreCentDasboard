@@ -37,7 +37,7 @@ The dashboard provides a clean, intuitive interface for visualizing data, includ
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/manzoorsofi/KoreCentDasboard.git
-    cd korecentdashboard
+    cd KoreCentDasboard
     ```
 
 2.  **Install dependencies:**
