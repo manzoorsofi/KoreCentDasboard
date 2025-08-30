@@ -1,8 +1,38 @@
 @import "tailwindcss";
 
+/* MUI and Tailwind CSS compatibility */
+* {
+  box-sizing: border-box;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light theme colors */
+  --background: #fafafa;
+  --foreground: #212121;
+  --paper: #ffffff;
+  --primary: #1976d2;
+  --secondary: #dc004e;
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --divider: #e0e0e0;
+
+  /* Design tokens */
+  --border-radius-xs: 4px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  --animation-duration-shortest: 150ms;
+  --animation-duration-shorter: 200ms;
+  --animation-duration-short: 250ms;
+  --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @theme inline {
@@ -10,17 +40,142 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* MUI compatible breakpoints */
+  --breakpoint-xs: 0px;
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 900px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1536px;
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+  --background: #121212;
+  --foreground: #ffffff;
+  --paper: #1e1e1e;
+  --primary: #90caf9;
+  --secondary: #f48fb1;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --divider: #333333;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #121212;
+    --foreground: #ffffff;
+    --paper: #1e1e1e;
+    --primary: #90caf9;
+    --secondary: #f48fb1;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --divider: #333333;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+html {
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Prevent elements from overflowing the viewport */
+img, video, iframe, object, embed {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent horizontal overflow on flex and grid containers */
+.MuiBox-root {
+  min-width: 0;
+}
+
+/* Ensure MUI components work well with Tailwind */
+.MuiCssBaseline-root {
+  color: inherit;
+}
+
+/* MUI emotion compatibility - prevent Tailwind from interfering */
+.css-dev-only-do-not-override-sk7ap8 {
+  /* Preserve MUI's emotion styles */
+}
+
+/* Smooth transitions for micro-interactions */
+.transition-smooth {
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom utility classes for MUI integration */
+.mui-shadow-1 {
+  box-shadow:
+    0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.mui-shadow-2 {
+  box-shadow:
+    0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.mui-shadow-3 {
+  box-shadow:
+    0px 3px 3px -2px rgba(0, 0, 0, 0.2),
+    0px 3px 4px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+}
+
+/* Theme transition utilities */
+.theme-transition {
+  transition:
+    background-color var(--animation-duration-shorter) var(--animation-easing),
+    color var(--animation-duration-shorter) var(--animation-easing),
+    border-color var(--animation-duration-shorter) var(--animation-easing);
+}
+
+/* Focus visible utilities for accessibility */
+.focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Loading skeleton animation */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.04),
+    transparent
+  );
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+}
+
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  background-size: 200px 100%;
 }
